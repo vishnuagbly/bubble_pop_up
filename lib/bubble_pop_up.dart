@@ -18,6 +18,13 @@ class BubblePopUp extends StatefulWidget {
   ///[popUpParentKey].
   ///
   ///For [popUpPosition] currently only bottom alignments are supported.
+  ///
+  ///Provide [childBorderRadius] as the border radius for the child, as this will
+  ///wrap the child around with an InkWell, therefore need to provide the
+  ///border radius for the splash.
+  ///
+  ///Set [onHover] and [onTap] to set, if to show pop up on hover and tap
+  ///respectively on the [child] widget.
   const BubblePopUp({
     super.key,
     required this.child,
@@ -27,6 +34,9 @@ class BubblePopUp extends StatefulWidget {
     this.popUpParentKey,
     this.triangleCornerRadius = 0,
     this.triangleSize = kDefaultTriangleSize,
+    this.childBorderRadius = BorderRadius.zero,
+    this.onHover = true,
+    this.onTap = true,
   });
 
   final Widget child;
@@ -35,6 +45,9 @@ class BubblePopUp extends StatefulWidget {
   final Color? popUpColor;
   final double triangleCornerRadius;
   final Size triangleSize;
+  final BorderRadius childBorderRadius;
+  final bool onHover;
+  final bool onTap;
 
   ///Currently only bottom alignments are supported, while support for top
   ///alignments is next. Currently there are no plans for side alignments'
@@ -60,6 +73,7 @@ class BubblePopUp extends StatefulWidget {
 class _BubblePopUpState extends State<BubblePopUp> {
   late final GlobalKey popUpParentKey;
   PopupController? controller;
+  bool isSelected = false;
 
   @override
   void initState() {
@@ -206,30 +220,58 @@ class _BubblePopUpState extends State<BubblePopUp> {
     );
   }
 
+  void addPopup() {
+    if (this.controller != null) return;
+    final popup = generatePopup(context);
+    if (popup == null) return;
+    final controller = PopupController.of(context).show(
+      builder: (context) => popup,
+      onDismiss: () {
+        isSelected = false;
+        this.controller = null;
+      },
+    );
+    this.controller = controller;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (event) {
-        // debugPrint('Entered MouseRegion');
-        if (this.controller != null) return;
-        final popup = generatePopup(context);
-        if (popup == null) return;
-        final controller = PopupController.of(context).show(
-          builder: (context) => popup,
-        );
-        this.controller = controller;
-      },
-      onExit: (event) async {
-        // debugPrint('Exited MouseRegion');
-        await controller?.remove();
-        controller = null;
-      },
-      child: widget.popUpParentKey == null
-          ? Container(
-              key: popUpParentKey,
-              child: widget.child,
-            )
-          : widget.child,
-    );
+    var body = widget.popUpParentKey == null
+        ? Container(
+            key: popUpParentKey,
+            child: widget.child,
+          )
+        : widget.child;
+
+    if (widget.onHover) {
+      body = MouseRegion(
+        onEnter: (event) {
+          // debugPrint('Entered MouseRegion');
+          if (widget.onHover) addPopup();
+        },
+        onExit: (event) async {
+          // debugPrint('Exited MouseRegion');
+
+          //Do not remove the pop up if, the pop up is selected from [onTap].
+          if (isSelected) return;
+
+          await controller?.remove();
+        },
+        child: body,
+      );
+    }
+
+    if (widget.onTap) {
+      body = InkWell(
+        borderRadius: widget.childBorderRadius,
+        onTap: () {
+          if (widget.onTap && !widget.onHover) addPopup();
+          isSelected = true;
+        },
+        child: body,
+      );
+    }
+
+    return body;
   }
 }
