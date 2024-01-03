@@ -226,12 +226,20 @@ class _BubblePopUpState extends State<BubblePopUp> {
     if (popup == null) return;
     final controller = PopupController.of(context).show(
       builder: (context) => popup,
+      showBarrier: true,
+      barrierColor: Colors.transparent,
       onDismiss: () {
         isSelected = false;
         this.controller = null;
       },
     );
     this.controller = controller;
+  }
+
+  @override
+  void dispose() {
+    controller?.remove();
+    super.dispose();
   }
 
   @override

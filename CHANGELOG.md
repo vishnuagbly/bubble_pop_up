@@ -1,3 +1,6 @@
+## 0.0.2+1
+Fixed bug with 'onTap' feature. Added auto close on dispose as well.
+
 ## 0.0.2
 Now pop up will also be shown on tap. Also can set whether to show pop 'onTap' and 'onHover'.
 
