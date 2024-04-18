@@ -31,7 +31,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.2"
+    version: "0.0.2+1"
   characters:
     dependency: transitive
     description:
@@ -60,10 +60,10 @@ packages:
     dependency: "direct main"
     description:
       name: cupertino_icons
-      sha256: d57953e10f9f8327ce64a508a355f0b1ec902193f66288e8cb5070e7c47eeb2d
+      sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.8"
   fake_async:
     dependency: transitive
     description:
@@ -94,10 +94,10 @@ packages:
     dependency: transitive
     description:
       name: helpful_components
-      sha256: ff9865ee9b30090e7cd79066b71d5e0bd2ba931918ab43caa49c239ef7306efd
+      sha256: "9d927dbcf835d1ce144808f756c79147d1bed05b1fd5793eef735de9438e1786"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.1"
+    version: "0.5.3"
   lints:
     dependency: transitive
     description:

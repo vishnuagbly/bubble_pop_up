@@ -220,6 +220,15 @@ class _BubblePopUpState extends State<BubblePopUp> {
     );
   }
 
+  bool isInsideBounds(Offset offset) {
+    final box = context.findRenderObject()! as RenderBox;
+    final boxOffset = box.localToGlobal(Offset.zero);
+    final size = box.size;
+    return !((offset.dx < boxOffset.dx ||
+            offset.dx > (boxOffset.dx + size.width)) ||
+        (offset.dy < boxOffset.dy || offset.dy > (boxOffset.dy + size.height)));
+  }
+
   void addPopup() {
     if (this.controller != null) return;
     final popup = generatePopup(context);
@@ -228,6 +237,23 @@ class _BubblePopUpState extends State<BubblePopUp> {
       builder: (context) => popup,
       showBarrier: true,
       barrierColor: Colors.transparent,
+      barrierDismissible: true,
+      onHoverInBarrier: (event) async {
+        if (isSelected) return;
+        final position = event.position;
+        if (!isInsideBounds(position)) {
+          await this.controller?.remove();
+        }
+      },
+      dismissCondition: (details) {
+        bool isInBounds = isInsideBounds(details.globalPosition);
+        if (isInBounds && !isSelected) {
+          isSelected = true;
+          return false;
+        } else {
+          return true;
+        }
+      },
       onDismiss: () {
         isSelected = false;
         this.controller = null;
@@ -242,6 +268,11 @@ class _BubblePopUpState extends State<BubblePopUp> {
     super.dispose();
   }
 
+  void _addPopUpOnTap() {
+    if (widget.onTap && !widget.onHover) addPopup();
+    isSelected = true;
+  }
+
   @override
   Widget build(BuildContext context) {
     var body = widget.popUpParentKey == null
@@ -251,30 +282,19 @@ class _BubblePopUpState extends State<BubblePopUp> {
           )
         : widget.child;
 
-    if (widget.onHover) {
-      body = MouseRegion(
-        onEnter: (event) {
-          // debugPrint('Entered MouseRegion');
-          if (widget.onHover) addPopup();
-        },
-        onExit: (event) async {
-          // debugPrint('Exited MouseRegion');
-
-          //Do not remove the pop up if, the pop up is selected from [onTap].
-          if (isSelected) return;
-
-          await controller?.remove();
-        },
+    if (widget.onTap && !widget.onHover) {
+      body = InkWell(
+        borderRadius: widget.childBorderRadius,
+        onTap: _addPopUpOnTap,
         child: body,
       );
     }
 
-    if (widget.onTap) {
-      body = InkWell(
-        borderRadius: widget.childBorderRadius,
-        onTap: () {
-          if (widget.onTap && !widget.onHover) addPopup();
-          isSelected = true;
+    if (widget.onHover) {
+      body = MouseRegion(
+        cursor: widget.onTap ? MouseCursor.uncontrolled : MouseCursor.defer,
+        onEnter: (event) {
+          if (widget.onHover) addPopup();
         },
         child: body,
       );
