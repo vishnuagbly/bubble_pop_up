@@ -1,3 +1,15 @@
+## 0.1.0
+[Breaking Change]: This consists of lots of breaking changes. We have re-designed whole system.
+Now we have a new config class, `BubblePopUpConfig` for various positioning related params for the
+pop-up.
+
+We have renamed few parameters:
+ - `popUpPosition` -> `baseAnchor`
+ - `triangleCornerRadius` -> `arrowCornerRadius`
+ - `triangleSize` -> `arrowSize`
+
+We have added new parameters, `popUpAnchor`, `arrowDirection`
+
 ## 0.0.3
 Fixed all bugs with `onTap` and `onHover` features.
 
