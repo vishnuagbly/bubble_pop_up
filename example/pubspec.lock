@@ -31,7 +31,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.2+1"
+    version: "0.0.3"
   characters:
     dependency: transitive
     description:
@@ -94,10 +94,10 @@ packages:
     dependency: transitive
     description:
       name: helpful_components
-      sha256: "9d927dbcf835d1ce144808f756c79147d1bed05b1fd5793eef735de9438e1786"
+      sha256: "19769b457d7172ffbf17bf60854c0ed38b368a055f82bc9e60f74e0cd08e6da4"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.3"
+    version: "1.0.0"
   lints:
     dependency: transitive
     description:
