@@ -1,3 +1,7 @@
+## 0.1.0+1
+Please note that the num_pair package has been extracted from this project and is now maintained as 
+a separate package. You can find the standalone num_pair package [here](https://pub.dev/packages/num_pair).
+
 ## 0.1.0
 [Breaking Change]: This consists of lots of breaking changes. We have re-designed whole system.
 Now we have a new config class, `BubblePopUpConfig` for various positioning related params for the
