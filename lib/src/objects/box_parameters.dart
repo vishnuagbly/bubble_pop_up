@@ -1,8 +1,8 @@
-import 'package:bubble_pop_up/src/extensions/num_pair.dart';
-import 'package:bubble_pop_up/src/num_pair/num_pair.dart';
 import 'package:bubble_pop_up/src/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:helpful_components/helpful_components.dart';
+import 'package:num_pair/extensions.dart';
+import 'package:num_pair/num_pair.dart';
 
 class BoxParameters {
   final GlobalKey? key;

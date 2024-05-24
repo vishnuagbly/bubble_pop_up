@@ -1,6 +1,7 @@
 import 'package:bubble_pop_up/src/extensions/num_pair.dart';
-import 'package:bubble_pop_up/src/num_pair/num_pair.dart';
 import 'package:flutter/material.dart';
+import 'package:num_pair/extensions.dart';
+import 'package:num_pair/num_pair.dart';
 
 import 'arrow_direction.dart';
 

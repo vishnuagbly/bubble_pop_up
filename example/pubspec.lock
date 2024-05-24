@@ -31,7 +31,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.3"
+    version: "0.1.0"
   characters:
     dependency: transitive
     description:
@@ -130,6 +130,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  num_pair:
+    dependency: transitive
+    description:
+      name: num_pair
+      sha256: "86fade03a5f9fa00f543ce895db117194e853a2a7c43b321903daca0db4c1c20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   path:
     dependency: transitive
     description:

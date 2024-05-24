@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   helpful_components: ^1.0.0
+  num_pair: ^0.0.1
 
 dev_dependencies:
   flutter_test:

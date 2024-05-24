@@ -14,19 +14,19 @@ class HomeScreen extends StatelessWidget {
               builder: (_) => Stack(
                     children: [
                       Positioned(
-                        top: 200,
-                        left: 200,
+                        top: 300,
+                        left: 150,
                         child: BubblePopUp(
                           config: BubblePopUpConfig(
-                            baseAnchor: Alignment.topCenter,
-                            popUpAnchor: Alignment.bottomLeft,
+                            baseAnchor: Alignment.topLeft,
+                            popUpAnchor: Alignment.bottomRight,
                             arrowDirection: ArrowDirection.down,
                             childBorderRadius: BorderRadius.circular(10),
                           ),
                           popUpColor: Colors.green,
                           popUp: Container(
                             width: 200,
-                            height: 50,
+                            height: 150,
                             decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(10),
