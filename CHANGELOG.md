@@ -1,3 +1,8 @@
+## 0.1.1
+[Fix]: With this change with `onTap` set as true, no matter hover is enabled or not an 
+InkWell widget will be wrapped around the `body`. This allows the user to tap on the widget to show 
+the pop-up.
+
 ## 0.1.0+1
 Please note that the num_pair package has been extracted from this project and is now maintained as 
 a separate package. You can find the standalone num_pair package [here](https://pub.dev/packages/num_pair).
