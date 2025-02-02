@@ -183,7 +183,7 @@ class _BubblePopUpState extends State<BubblePopUp> {
   }
 
   void _addPopUpOnTap() {
-    if (widget.onTap && !widget.onHover) addPopup();
+    addPopup();
     isSelected = true;
   }
 
@@ -196,7 +196,7 @@ class _BubblePopUpState extends State<BubblePopUp> {
           )
         : widget.child;
 
-    if (widget.onTap && !widget.onHover) {
+    if (widget.onTap) {
       body = InkWell(
         borderRadius: config.childBorderRadius,
         onTap: _addPopUpOnTap,
