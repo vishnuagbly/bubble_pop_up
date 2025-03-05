@@ -1,6 +1,6 @@
 name: bubble_pop_up
 description: "A package to provide bubble pop ups for any Widget over anywhere."
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/vishnuagbly/bubble_pop_up
 
 environment:
@@ -11,13 +11,13 @@ dependencies:
   advanced_polygons: ^0.0.1+4
   flutter:
     sdk: flutter
-  helpful_components: ^1.0.0
+  helpful_components: ^2.2.0
   num_pair: ^0.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

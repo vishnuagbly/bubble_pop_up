@@ -1,3 +1,6 @@
+## 0.1.2
+Updated dependencies
+
 ## 0.1.1
 [Fix]: With this change with `onTap` set as true, no matter hover is enabled or not an 
 InkWell widget will be wrapped around the `body`. This allows the user to tap on the widget to show 
