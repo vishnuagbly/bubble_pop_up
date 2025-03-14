@@ -158,7 +158,7 @@ class BubblePopUpEngine {
     ///It basically gets the x or y value of the border radius, depending on the
     ///arrow direction. Basically it returns (Br.x, 0) or (0, Br.y) based on the
     ///arrow direction.
-    final correctionValue = (1.np - dr) * br;
+    final correctionValue = (1.np - dr.abs()) * br;
 
     ///This is the normalized vector to travel from the baseAnchor to the
     ///point of contact. Basically the sign, if we have to subtract or add
