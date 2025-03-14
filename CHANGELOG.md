@@ -1,3 +1,6 @@
+## 1.0.0
+Added support for base border radius. This completes the package roadmap.
+
 ## 0.2.0
 Fixed a bug in setting, bottom right child border radius value for downward arrow direction.
 

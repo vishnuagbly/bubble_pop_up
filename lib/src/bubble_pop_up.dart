@@ -21,7 +21,11 @@ class BubblePopUp extends StatefulWidget {
   ///wrap the child around with an InkWell, therefore need to provide the
   ///border radius for the splash.
   ///
-  ///TODO: Add baseBorderRadius Doc here
+  ///Provide [baseBorderRadius] as the border radius for the base widget, i.e
+  ///the widget around which the pop-up will be shown. This will be used to
+  ///move around the pop-up arrow according to the base border radius, so that
+  ///pop-up is in contact with base widget always, even in case base border
+  ///radius present.
   ///
   ///Set [onHover] and [onTap] to set, if to show pop up on hover and tap
   ///respectively on the [child] widget.

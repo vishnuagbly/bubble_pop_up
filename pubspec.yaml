@@ -1,6 +1,6 @@
 name: bubble_pop_up
 description: "A package to provide bubble pop ups for any Widget over anywhere."
-version: 0.2.0
+version: 1.0.0
 homepage: https://github.com/vishnuagbly/bubble_pop_up
 
 environment:
