@@ -1,3 +1,6 @@
+## 0.2.0
+Fixed a bug in setting, bottom right child border radius value for downward arrow direction.
+
 ## 0.1.2
 Updated dependencies
 
