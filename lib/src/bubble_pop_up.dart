@@ -21,6 +21,8 @@ class BubblePopUp extends StatefulWidget {
   ///wrap the child around with an InkWell, therefore need to provide the
   ///border radius for the splash.
   ///
+  ///TODO: Add baseBorderRadius Doc here
+  ///
   ///Set [onHover] and [onTap] to set, if to show pop up on hover and tap
   ///respectively on the [child] widget.
   const BubblePopUp({

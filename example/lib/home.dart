@@ -21,18 +21,19 @@ class HomeScreen extends StatelessWidget {
               builder: (_) => Stack(
                     children: [
                       Positioned(
-                        top: 300,
+                        top: 100,
                         left: 150,
                         child: BubblePopUp(
-                          config: const BubblePopUpConfig(
+                          config: BubblePopUpConfig(
                             baseAnchor: Alignment.topLeft,
                             popUpAnchor: Alignment.bottomRight,
                             arrowDirection: ArrowDirection.down,
                             childBorderRadius: childBorderRadius,
+                            baseBorderRadius: BorderRadius.circular(10),
                           ),
                           popUpColor: Colors.green,
                           popUp: Container(
-                            width: 150,
+                            width: 200,
                             height: 150,
                             decoration: const BoxDecoration(
                               color: Colors.green,
@@ -40,9 +41,12 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           child: Container(
-                            width: 50,
+                            width: 100,
                             height: 50,
-                            color: Colors.red,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
                       ),

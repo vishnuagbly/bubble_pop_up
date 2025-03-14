@@ -143,7 +143,29 @@ class BubblePopUpEngine {
   ///This calculates the Point-of-Contact of the "arrow" with the "base".
   NumPair _calculatePointOfContactOffset(NumPair baseTopLeft) {
     final baseAnchor = (config.baseAnchor.np / 2) + 0.5.np;
-    return baseTopLeft + (baseAnchor * base.size);
+    //Without considering base border radius
+    final res = baseTopLeft + (baseAnchor * base.size);
+
+    /* In case of base having border radius, we would need to adjust the
+    point of contact accordingly. */
+
+    ///Border Radius of corner at baseAnchor. If baseAnchor is other than at a
+    ///corner, this will be (0, 0).
+    final br = config.baseBorderRadius.atCoordOrZero(baseAnchor);
+    final dr = config.arrowDirection.np;
+
+    ///Value to be added or subtracted to the point of contact offset value.
+    ///It basically gets the x or y value of the border radius, depending on the
+    ///arrow direction. Basically it returns (Br.x, 0) or (0, Br.y) based on the
+    ///arrow direction.
+    final correctionValue = (1.np - dr.abs()) * br;
+
+    ///This is the normalized vector to travel from the baseAnchor to the
+    ///point of contact. Basically the sign, if we have to subtract or add
+    ///the correction value.
+    final sign = (1.np - (baseAnchor * 2));
+
+    return res + (sign * correctionValue);
   }
 
   ///This will return the top-left offset of the pop-up, i.e where the pop-up
