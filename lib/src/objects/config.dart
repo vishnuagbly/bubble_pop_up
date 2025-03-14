@@ -10,6 +10,7 @@ class BubblePopUpConfig {
   final num arrowCornerRadius;
   final Size arrowParams;
   final BorderRadius childBorderRadius;
+  final BorderRadius baseBorderRadius;
   final Alignment baseAnchor;
 
   ///This will be the position on the pop-up where it will have the arrow, i.e
@@ -29,6 +30,7 @@ class BubblePopUpConfig {
     this.arrowDirection = ArrowDirection.up,
     this.arrowParams = kDefaultArrowParams,
     this.childBorderRadius = BorderRadius.zero,
+    this.baseBorderRadius = BorderRadius.zero,
     this.baseAnchor = Alignment.bottomCenter,
     this.popUpAnchor = Alignment.topCenter,
   });
@@ -64,6 +66,7 @@ class BubblePopUpConfig {
     num? arrowCornerRadius,
     Size? triangleParams,
     BorderRadius? childBorderRadius,
+    BorderRadius? baseBorderRadius,
     Alignment? baseAnchor,
     Alignment? popUpAnchor,
     ArrowDirection? arrowDirection,
@@ -73,6 +76,7 @@ class BubblePopUpConfig {
         arrowCornerRadius: arrowCornerRadius ?? this.arrowCornerRadius,
         arrowParams: triangleParams ?? this.arrowParams,
         childBorderRadius: childBorderRadius ?? this.childBorderRadius,
+        baseBorderRadius: baseBorderRadius ?? this.baseBorderRadius,
         baseAnchor: baseAnchor ?? this.baseAnchor,
         popUpAnchor: popUpAnchor ?? this.popUpAnchor,
         arrowDirection: arrowDirection ?? this.arrowDirection,
@@ -85,6 +89,7 @@ class BubblePopUpConfig {
         arrowCornerRadius == other.arrowCornerRadius &&
         arrowParams == other.arrowParams &&
         childBorderRadius == other.childBorderRadius &&
+        baseBorderRadius == other.baseBorderRadius &&
         baseAnchor == other.baseAnchor &&
         popUpAnchor == other.popUpAnchor &&
         arrowDirection == other.arrowDirection;
@@ -96,6 +101,7 @@ class BubblePopUpConfig {
         arrowCornerRadius,
         arrowParams,
         childBorderRadius,
+        baseBorderRadius,
         baseAnchor,
         popUpAnchor,
         arrowDirection,
