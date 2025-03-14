@@ -93,7 +93,7 @@ class BubblePopUpEngine {
       },
       (0, 1).np: {
         -1: config.childBorderRadius.bottomLeft.x,
-        1: config.childBorderRadius.bottomRight.y,
+        1: config.childBorderRadius.bottomRight.x,
       },
       (-1, 0).np: {
         -1: config.childBorderRadius.topLeft.y,

@@ -6,6 +6,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const childBorderRadius = BorderRadius.only(
+      topLeft: Radius.circular(10),
+      topRight: Radius.circular(10),
+      bottomLeft: Radius.circular(10),
+      bottomRight: Radius.elliptical(30, 20),
+    );
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -17,19 +24,19 @@ class HomeScreen extends StatelessWidget {
                         top: 300,
                         left: 150,
                         child: BubblePopUp(
-                          config: BubblePopUpConfig(
+                          config: const BubblePopUpConfig(
                             baseAnchor: Alignment.topLeft,
                             popUpAnchor: Alignment.bottomRight,
                             arrowDirection: ArrowDirection.down,
-                            childBorderRadius: BorderRadius.circular(10),
+                            childBorderRadius: childBorderRadius,
                           ),
                           popUpColor: Colors.green,
                           popUp: Container(
-                            width: 200,
+                            width: 150,
                             height: 150,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.green,
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: childBorderRadius,
                             ),
                           ),
                           child: Container(
