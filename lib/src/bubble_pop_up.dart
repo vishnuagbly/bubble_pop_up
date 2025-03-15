@@ -47,10 +47,10 @@ class BubblePopUp extends StatefulWidget {
   final BubblePopUpConfig config;
 
   @override
-  State<BubblePopUp> createState() => _BubblePopUpState();
+  State<BubblePopUp> createState() => BubblePopUpState();
 }
 
-class _BubblePopUpState extends State<BubblePopUp> {
+class BubblePopUpState extends State<BubblePopUp> {
   late BubblePopUpConfig config;
   PopupController? controller;
   bool isSelected = false;
@@ -188,7 +188,7 @@ class _BubblePopUpState extends State<BubblePopUp> {
     super.dispose();
   }
 
-  void _addPopUpOnTap() {
+  void addPopUpAndSelect() {
     addPopup();
     isSelected = true;
   }
@@ -205,7 +205,7 @@ class _BubblePopUpState extends State<BubblePopUp> {
     if (widget.onTap) {
       body = InkWell(
         borderRadius: config.childBorderRadius,
-        onTap: _addPopUpOnTap,
+        onTap: addPopUpAndSelect,
         child: body,
       );
     }

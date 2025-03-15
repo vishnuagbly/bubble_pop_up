@@ -18,6 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Alignment baseAnchor = Alignment.bottomLeft;
   Alignment popUpAnchor = Alignment.topRight;
   ArrowDirection arrowDirection = ArrowDirection.up;
+  final focusNode = FocusNode();
+
+  void updateBaseCoords(int x, int y) {
+    setState(() => baseCoords = (x, y));
+  }
 
   Widget get menu {
     final textTheme = Theme.of(context).textTheme;
@@ -33,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 initialValue: '${baseCoords.$1}',
                 label: 'X',
                 onFieldSubmitted: (value) {
-                  setState(() => baseCoords = (value, baseCoords.$2));
+                  updateBaseCoords(value, baseCoords.$2);
                 },
               ),
             ),
@@ -43,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 initialValue: '${baseCoords.$2}',
                 label: 'Y',
                 onFieldSubmitted: (value) {
-                  setState(() => baseCoords = (baseCoords.$1, value));
+                  updateBaseCoords(baseCoords.$1, value);
                 },
               ),
             ),
@@ -82,78 +87,105 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomRight: Radius.elliptical(30, 20),
     );
 
+    final popUpKey = GlobalKey<BubblePopUpState>();
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        if (FocusScope.of(context).focusedChild == null) {
+          FocusScope.of(context).requestFocus(focusNode);
+        }
+        popUpKey.currentState?.addPopUpAndSelect();
+      },
+    );
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Builder(
-            builder: (_) {
-              final board = PopupScope(
-                builder: (_) => Stack(
+          child: KeyboardListener(
+            focusNode: focusNode,
+            onKeyEvent: (event) {
+              if (event is KeyDownEvent) {
+                if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+                  updateBaseCoords(baseCoords.$1, baseCoords.$2 + 5);
+                } else if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+                  updateBaseCoords(baseCoords.$1, baseCoords.$2 - 5);
+                } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+                  updateBaseCoords(baseCoords.$1 - 5, baseCoords.$2);
+                } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+                  updateBaseCoords(baseCoords.$1 + 5, baseCoords.$2);
+                }
+              }
+            },
+            child: Builder(
+              builder: (_) {
+                final board = PopupScope(
+                  builder: (_) => Stack(
+                    children: [
+                      Positioned(
+                        top: baseCoords.$2.toDouble(),
+                        left: baseCoords.$1.toDouble(),
+                        child: BubblePopUp(
+                          key: popUpKey,
+                          config: BubblePopUpConfig(
+                            baseAnchor: baseAnchor,
+                            popUpAnchor: popUpAnchor,
+                            arrowDirection: arrowDirection,
+                            childBorderRadius: childBorderRadius,
+                            baseBorderRadius: BorderRadius.circular(10),
+                          ),
+                          popUpColor: Colors.green,
+                          popUp: Container(
+                            width: 200,
+                            height: 150,
+                            decoration: const BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: childBorderRadius,
+                            ),
+                          ),
+                          child: Container(
+                            width: 100,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+
+                if (!largeScreenMode) return board;
+                final colorScheme = Theme.of(context).colorScheme;
+
+                return Row(
                   children: [
-                    Positioned(
-                      top: baseCoords.$2.toDouble(),
-                      left: baseCoords.$1.toDouble(),
-                      child: BubblePopUp(
-                        config: BubblePopUpConfig(
-                          baseAnchor: baseAnchor,
-                          popUpAnchor: popUpAnchor,
-                          arrowDirection: arrowDirection,
-                          childBorderRadius: childBorderRadius,
-                          baseBorderRadius: BorderRadius.circular(10),
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: Globals.borderRadius,
+                          border: Border.all(color: colorScheme.onSurface),
                         ),
-                        popUpColor: Colors.green,
-                        popUp: Container(
-                          width: 200,
-                          height: 150,
-                          decoration: const BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: childBorderRadius,
-                          ),
+                        child: board,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          borderRadius: Globals.borderRadius,
+                          border: Border.all(color: colorScheme.onSurface),
                         ),
-                        child: Container(
-                          width: 100,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
+                        child: menu,
                       ),
                     ),
                   ],
-                ),
-              );
-
-              if (!largeScreenMode) return board;
-              final colorScheme = Theme.of(context).colorScheme;
-
-              return Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: Globals.borderRadius,
-                        border: Border.all(color: colorScheme.onSurface),
-                      ),
-                      child: board,
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        borderRadius: Globals.borderRadius,
-                        border: Border.all(color: colorScheme.onSurface),
-                      ),
-                      child: menu,
-                    ),
-                  ),
-                ],
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
         floatingActionButton: !largeScreenMode
@@ -195,6 +227,7 @@ class _CoordInputField extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Row(
+      key: ValueKey(initialValue),
       children: [
         Text('$label: ', style: textTheme.headlineSmall),
         const SizedBox(width: 10),
