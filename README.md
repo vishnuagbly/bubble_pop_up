@@ -40,8 +40,8 @@ BubblePopUp(
     baseAnchor: Alignment.topLeft,  // Position of the arrow's POC on the base widget
     popUpAnchor: Alignment.bottomRight,  // Position of the arrow on the pop-up widget
     arrowDirection: ArrowDirection.right,
-    popUpBorderRadius: popUpBorderRadius,  // Border radius of the pop-up
-    baseBorderRadius: BorderRadius.circular(10),  // Border radius of the base widget
+    popUpBorderRadius: popUpBorderRadius,
+    baseBorderRadius: BorderRadius.circular(10),
   ),
   popUpColor: Colors.green,
   popUp: Container(
@@ -81,10 +81,10 @@ You can fully customize the **position, appearance, and behavior** of the pop-up
 BubblePopUpConfig(
   baseAnchor: Alignment.bottomCenter,   // Position of the arrow's POC on the base widget
   popUpAnchor: Alignment.topCenter,    // Position of the arrow on the pop-up widget
-  arrowDirection: ArrowDirection.up,   // Direction of the arrow
-  arrowCornerRadius: 4,                // Adds a corner radius to the arrow
-  popUpBorderRadius: BorderRadius.circular(12),  // Border radius of the pop-up
-  baseBorderRadius: BorderRadius.circular(12),  // Border radius of the base widget
+  arrowDirection: ArrowDirection.up,
+  arrowCornerRadius: 4,
+  popUpBorderRadius: BorderRadius.circular(12),
+  baseBorderRadius: BorderRadius.circular(12),
 );
 ```
 
