@@ -1,3 +1,6 @@
+## 2.0.1
+- Updated example app.
+
 ## 2.0.0
 - [Breaking Change]: Renamed `childBorderRadius` to `popUpBorderRadius`.
 - Made `BubblePopUpState` as public, which exposes `addPopUp` and `addPopUpAndSelect` functions.
