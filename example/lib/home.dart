@@ -281,7 +281,7 @@ class _ArrowDirectionSelector extends StatelessWidget {
       );
 }
 
-class _EnumSelector<T> extends StatefulWidget {
+class _EnumSelector<T> extends StatelessWidget {
   _EnumSelector({
     super.key,
     required this.initialValue,
@@ -299,40 +299,19 @@ class _EnumSelector<T> extends StatefulWidget {
   final String label;
 
   @override
-  State<_EnumSelector<T>> createState() => _EnumSelectorState<T>();
-}
-
-class _EnumSelectorState<T> extends State<_EnumSelector<T>> {
-  GlobalKey _popUpKey = GlobalKey();
-
-  set popUpKey(GlobalKey value) {
-    debugPrint('Updated popUpKey: $_popUpKey $value');
-    _popUpKey = value;
-  }
-
-  GlobalKey get popUpKey => _popUpKey;
-
-  @override
-  void dispose() {
-    debugPrint('Disposing _popUpKey: $_popUpKey');
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    popUpKey = GlobalKey();
+    final popUpKey = GlobalKey();
     return Row(
       children: [
-        Text('${widget.label}: ', style: textTheme.headlineSmall),
+        Text('$label: ', style: textTheme.headlineSmall),
         const SizedBox(width: 10),
         Expanded(
           child: TextFormField(
-            controller: widget.controller,
+            controller: controller,
             key: popUpKey,
             readOnly: true,
             onTap: () {
-              debugPrint('Used popUpKey: $popUpKey');
               PopupController.of(context).show(
                 barrierDismissible: true,
                 showBarrier: true,
@@ -352,12 +331,12 @@ class _EnumSelectorState<T> extends State<_EnumSelector<T>> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            for (final entry in widget.enumLabels.entries)
+                            for (final entry in enumLabels.entries)
                               TextButton(
                                 child: Text(entry.value),
                                 onPressed: () {
-                                  widget.onSubmitted(entry.key);
-                                  widget.controller.text = entry.value;
+                                  onSubmitted(entry.key);
+                                  controller.text = entry.value;
                                   PopupController.of(context).remove();
                                 },
                               ),
