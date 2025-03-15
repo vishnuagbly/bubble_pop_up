@@ -1,6 +1,7 @@
-## 1.1.0
-Updated Example App and Readme
-Made `BubblePopUpState` as public, which exposes `addPopUp` and `addPopUpAndSelect` functions.
+## 2.0.0
+- [Breaking Change]: Renamed `childBorderRadius` to `popUpBorderRadius`.
+- Made `BubblePopUpState` as public, which exposes `addPopUp` and `addPopUpAndSelect` functions.
+- Updated Example App and Readme
 
 ## 1.0.0
 Added support for base border radius. This completes the package roadmap.
