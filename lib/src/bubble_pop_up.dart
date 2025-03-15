@@ -17,7 +17,7 @@ class BubblePopUp extends StatefulWidget {
   ///Note:- Hover will always work around [child], instead of the widget with
   ///[popUpParentKey].
   ///
-  ///Provide [childBorderRadius] as the border radius for the child, as this will
+  ///Provide [popUpBorderRadius] as the border radius for the child, as this will
   ///wrap the child around with an InkWell, therefore need to provide the
   ///border radius for the splash.
   ///
@@ -204,7 +204,7 @@ class BubblePopUpState extends State<BubblePopUp> {
 
     if (widget.onTap) {
       body = InkWell(
-        borderRadius: config.childBorderRadius,
+        borderRadius: config.popUpBorderRadius,
         onTap: addPopUpAndSelect,
         child: body,
       );

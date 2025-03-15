@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final screenWidth = MediaQuery.of(context).size.width;
     final largeScreenMode = screenWidth >= 600;
 
-    const childBorderRadius = BorderRadius.only(
+    const popUpBorderRadius = BorderRadius.only(
       topLeft: Radius.circular(10),
       topRight: Radius.circular(10),
       bottomLeft: Radius.circular(10),
@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             baseAnchor: baseAnchor,
                             popUpAnchor: popUpAnchor,
                             arrowDirection: arrowDirection,
-                            childBorderRadius: childBorderRadius,
+                            popUpBorderRadius: popUpBorderRadius,
                             baseBorderRadius: BorderRadius.circular(10),
                           ),
                           popUpColor: Colors.green,
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 150,
                             decoration: const BoxDecoration(
                               color: Colors.green,
-                              borderRadius: childBorderRadius,
+                              borderRadius: popUpBorderRadius,
                             ),
                           ),
                           child: Container(

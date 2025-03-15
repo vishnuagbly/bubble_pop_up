@@ -84,20 +84,20 @@ class BubblePopUpEngine {
       BubblePopUpConfig config) {
     final res = <NumPair, Map<double, double>>{
       (0, -1).np: {
-        -1: config.childBorderRadius.topLeft.x,
-        1: config.childBorderRadius.topRight.x,
+        -1: config.popUpBorderRadius.topLeft.x,
+        1: config.popUpBorderRadius.topRight.x,
       },
       (1, 0).np: {
-        -1: config.childBorderRadius.topRight.y,
-        1: config.childBorderRadius.bottomRight.y,
+        -1: config.popUpBorderRadius.topRight.y,
+        1: config.popUpBorderRadius.bottomRight.y,
       },
       (0, 1).np: {
-        -1: config.childBorderRadius.bottomLeft.x,
-        1: config.childBorderRadius.bottomRight.x,
+        -1: config.popUpBorderRadius.bottomLeft.x,
+        1: config.popUpBorderRadius.bottomRight.x,
       },
       (-1, 0).np: {
-        -1: config.childBorderRadius.topLeft.y,
-        1: config.childBorderRadius.bottomLeft.y,
+        -1: config.popUpBorderRadius.topLeft.y,
+        1: config.popUpBorderRadius.bottomLeft.y,
       }
     };
 

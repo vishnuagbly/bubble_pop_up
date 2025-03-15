@@ -9,7 +9,7 @@ class BubblePopUpConfig {
   final GlobalKey? popUpParentKey;
   final num arrowCornerRadius;
   final Size arrowParams;
-  final BorderRadius childBorderRadius;
+  final BorderRadius popUpBorderRadius;
   final BorderRadius baseBorderRadius;
   final Alignment baseAnchor;
 
@@ -29,7 +29,7 @@ class BubblePopUpConfig {
     this.arrowCornerRadius = 0,
     this.arrowDirection = ArrowDirection.up,
     this.arrowParams = kDefaultArrowParams,
-    this.childBorderRadius = BorderRadius.zero,
+    this.popUpBorderRadius = BorderRadius.zero,
     this.baseBorderRadius = BorderRadius.zero,
     this.baseAnchor = Alignment.bottomCenter,
     this.popUpAnchor = Alignment.topCenter,
@@ -75,7 +75,7 @@ class BubblePopUpConfig {
         popUpParentKey: popUpParentKey ?? this.popUpParentKey,
         arrowCornerRadius: arrowCornerRadius ?? this.arrowCornerRadius,
         arrowParams: triangleParams ?? this.arrowParams,
-        childBorderRadius: childBorderRadius ?? this.childBorderRadius,
+        popUpBorderRadius: childBorderRadius ?? this.popUpBorderRadius,
         baseBorderRadius: baseBorderRadius ?? this.baseBorderRadius,
         baseAnchor: baseAnchor ?? this.baseAnchor,
         popUpAnchor: popUpAnchor ?? this.popUpAnchor,
@@ -88,7 +88,7 @@ class BubblePopUpConfig {
         popUpParentKey == other.popUpParentKey &&
         arrowCornerRadius == other.arrowCornerRadius &&
         arrowParams == other.arrowParams &&
-        childBorderRadius == other.childBorderRadius &&
+        popUpBorderRadius == other.popUpBorderRadius &&
         baseBorderRadius == other.baseBorderRadius &&
         baseAnchor == other.baseAnchor &&
         popUpAnchor == other.popUpAnchor &&
@@ -100,7 +100,7 @@ class BubblePopUpConfig {
         popUpParentKey,
         arrowCornerRadius,
         arrowParams,
-        childBorderRadius,
+        popUpBorderRadius,
         baseBorderRadius,
         baseAnchor,
         popUpAnchor,
