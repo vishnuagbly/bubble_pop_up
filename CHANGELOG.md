@@ -1,5 +1,8 @@
+## 2.0.2
+Updated Images link in README.
+
 ## 2.0.1
-- Updated example app.
+Updated example app.
 
 ## 2.0.0
 - [Breaking Change]: Renamed `childBorderRadius` to `popUpBorderRadius`.

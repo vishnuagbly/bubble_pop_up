@@ -31,7 +31,7 @@ Simply wrap your widget with `BubblePopUp` and specify the **pop-up widget and c
 
 ### Example 1: Right-Aligned Pop-up
 
-![Example 1](documentation/top_left-bottom_right_right.png)
+![Example 1](https://github.com/vishnuagbly/bubble_pop_up/raw/main/documentation/top_left-bottom_right_right.png)
 
 ```dart
 BubblePopUp(
@@ -65,7 +65,7 @@ BubblePopUp(
 
 ### Example 2: Downward Pop-up
 
-![Example 2](documentation/top_left-bottom_right-down.png)
+![Example 2](https://github.com/vishnuagbly/bubble_pop_up/raw/main/documentation/top_left-bottom_right-down.png)
 
 The only difference from **Example 1** is the `arrowDirection` parameter:
 
@@ -93,7 +93,7 @@ The package automatically adjusts the pop-up’s position if it would overflow t
 
 | Same Axis Collision | Cross Axis Collision |
 |---------------------|----------------------|
-| ![same-axis](documentation/same-axis-collision.gif) | ![cross-axis](documentation/cross-axis-collision.gif) |
+| ![same-axis](https://github.com/vishnuagbly/bubble_pop_up/raw/main/documentation/same-axis-collision.gif) | ![cross-axis](https://github.com/vishnuagbly/bubble_pop_up/raw/main/documentation/cross-axis-collision.gif) |
 
 ## 📌 Example Scenarios
 
