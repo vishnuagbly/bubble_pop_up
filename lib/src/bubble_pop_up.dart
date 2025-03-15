@@ -76,7 +76,7 @@ class BubblePopUpState extends State<BubblePopUp> {
     );
   }
 
-  Widget? generatePopup(BuildContext context) {
+  Widget? _generatePopup(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
 
     final controller = PopupController.of(context);
@@ -140,7 +140,7 @@ class BubblePopUpState extends State<BubblePopUp> {
     );
   }
 
-  bool isInsideBounds(Offset offset) {
+  bool _isInsideBounds(Offset offset) {
     final box = context.findRenderObject()! as RenderBox;
     final boxOffset = box.localToGlobal(Offset.zero);
     final size = box.size;
@@ -151,7 +151,7 @@ class BubblePopUpState extends State<BubblePopUp> {
 
   void addPopup() {
     if (this.controller != null) return;
-    final popup = generatePopup(context);
+    final popup = _generatePopup(context);
     if (popup == null) return;
     final controller = PopupController.of(context).show(
       builder: (context) => popup,
@@ -161,12 +161,12 @@ class BubblePopUpState extends State<BubblePopUp> {
       onHoverInBarrier: (event) async {
         if (isSelected) return;
         final position = event.position;
-        if (!isInsideBounds(position)) {
+        if (!_isInsideBounds(position)) {
           await this.controller?.remove();
         }
       },
       dismissCondition: (details) {
-        bool isInBounds = isInsideBounds(details.globalPosition);
+        bool isInBounds = _isInsideBounds(details.globalPosition);
         if (isInBounds && !isSelected) {
           isSelected = true;
           return false;
