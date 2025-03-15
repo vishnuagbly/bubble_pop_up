@@ -1,3 +1,7 @@
+## 1.1.0
+Updated Example App and Readme
+Made `BubblePopUpState` as public, which exposes `addPopUp` and `addPopUpAndSelect` functions.
+
 ## 1.0.0
 Added support for base border radius. This completes the package roadmap.
 
