@@ -1,3 +1,6 @@
+## 2.1.0
+Updated default color of pop-up from ColorScheme.background to ColorScheme.surface.
+
 ## 2.0.2
 Updated Images link in README.
 
