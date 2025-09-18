@@ -81,7 +81,7 @@ class BubblePopUpState extends State<BubblePopUp> {
 
     final controller = PopupController.of(context);
 
-    final popUpColor = widget.popUpColor ?? scheme.background;
+    final popUpColor = widget.popUpColor ?? scheme.surface;
     final popupContent = widget.popUp;
 
     final triangleSize = config.arrowSize;
